@@ -18,7 +18,7 @@ pelo **Coeficiente de Silhueta** e pelo tempo de execução, com:
 ## Estrutura
 
 ```
-codigo.V4.py                                  # script principal
+analise_clusters.py                           # script principal
 bdqueimadas_2025-01-01_2025-12-31.csv         # base de dados (INPE)
 relatorio.pdf                                 # artigo (template IEEE, dupla coluna)
 requirements.txt                              # dependências
