@@ -20,7 +20,7 @@ pelo **Coeficiente de Silhueta** e pelo tempo de execução, com:
 ```
 codigo.V4.py                                  # script principal
 bdqueimadas_2025-01-01_2025-12-31.csv         # base de dados (INPE)
-relatorio.tex / relatorio.pdf                 # artigo (template IEEE, dupla coluna)
+relatorio.pdf                                 # artigo (template IEEE, dupla coluna)
 requirements.txt                              # dependências
 ```
 
