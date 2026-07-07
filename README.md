@@ -1,3 +1,77 @@
+# Identification of Spatial Patterns in Wildfire Hotspots in Brazil (SDG 15)
+
+Unsupervised spatial analysis comparing **K-Means**, **GMM**, and **DBSCAN**
+on fire hotspots from INPE (BDQueimadas, 2025), aligned with Sustainable
+Development Goal 15 (Life on Land).
+
+## Overview
+
+The feature vector combines **Latitude, Longitude, and FRP** (Fire Radiative
+Power). The three algorithms are compared across **30 independent runs**
+using the **Silhouette Coefficient** and execution time, with:
+
+- **Kruskal-Wallis** hypothesis test over the 30 runs;
+- **Parameter variation study** (`k` for K-Means, `eps` for DBSCAN);
+- **Segmented analysis by biome** (Cerrado × Amazon) with `eps` recalibration;
+- Exploratory figures (EDA) and results plots.
+
+## Structure
+
+```
+codigo.V4.py                                  # main script
+bdqueimadas_2025-01-01_2025-12-31.csv         # dataset (INPE)
+relatorio.tex / relatorio.pdf                 # paper (IEEE template, double column)
+requirements.txt                              # dependencies
+```
+
+## How to Reproduce
+
+1. Create and activate a virtual environment (optional, but recommended):
+   ```bash
+   python -m venv .venv
+   .venv\Scripts\activate      # Windows
+   # source .venv/bin/activate  # Linux/Mac
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Make sure the CSV `bdqueimadas_2025-01-01_2025-12-31.csv` is in the same folder.
+4. Run:
+   ```bash
+   python codigo.V4.py
+   ```
+
+## Reproducibility
+
+- Random seeds are explicitly declared (`semente = i * 42`), ensuring the 30
+  runs are deterministic.
+- Algorithm fitting occurs on 80% of the dense base (preserving the density
+  structure required by DBSCAN); silhouette computation uses internal subsampling
+  of 5,000 points (`sample_size`) to manage the O(n²) cost.
+- Hyperparameters: K-Means `k=8`; GMM `n_components=8`, covariance `full`;
+  DBSCAN `eps=0.30`, `MinPts=15`.
+
+## Generated Outputs (PNG)
+
+| File | Content |
+|---|---|
+| `eda_frp_hist.png` | FRP histogram (log scale) |
+| `eda_focos_bioma.png` | Hotspot map by biome |
+| `param_kmeans_k.png` | Silhouette × `k` (K-Means) |
+| `param_dbscan_eps.png` | Silhouette and noise × `eps` (DBSCAN) |
+| `boxplot_silhueta.png` | Silhouette distribution across 30 runs |
+| `scatter_dbscan.png` | DBSCAN spatial clusters |
+
+## Data Source
+
+INPE — Queimadas Program / TerraBrasilis: https://terrabrasilis.dpi.inpe.br/
+
+---
+
+---
+
+
 # Identificação de Padrões Espaciais em Focos de Incêndio no Brasil (ODS 15)
 
 Análise espacial não supervisionada comparando **K-Means**, **GMM** e **DBSCAN**
