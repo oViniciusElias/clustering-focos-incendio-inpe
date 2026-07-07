@@ -20,7 +20,7 @@ using the **Silhouette Coefficient** and execution time, with:
 ```
 codigo.V4.py                                  # main script
 bdqueimadas_2025-01-01_2025-12-31.csv         # dataset (INPE)
-relatorio.tex / relatorio.pdf                 # paper (IEEE template, double column)
+project_report.pdf                            # paper (IEEE template, double column)
 requirements.txt                              # dependencies
 ```
 
